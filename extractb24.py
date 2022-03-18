@@ -14,9 +14,9 @@ def extract_pcap(file_name):
             msize = int(header[0:2].hex(),16) # size of ISO 8583 packet
             message = data[2:]
             print('TCP Message size from data {} bytes, size from header {} bytes'.format(len(data),msize))
-            hmessage = message[0:48]
+            hmessage = message[0:12]
             print('ISO 8583 Header {}'.format(hmessage.hex()))
-            bmessage = message[48:]
+            bmessage = message[12:]
             print('ISO 8583 Message {}'.format(bmessage.hex()))
             count += 1
         except Exception:
